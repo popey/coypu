@@ -14,6 +14,7 @@
     "app": "electron app",
     "pack": "npm run build && build --dir",
     "dist": "npm run build && build -mwl",
+    "linux": "electron-builder --linux",
     "test": "jest",
     "lint": "eslint --ext .js,.vue src test"
   },
@@ -38,8 +39,19 @@
     "linux": {
       "category": "Office",
       "packageCategory": "misc",
-      "target": "deb",
+      "target": [
+        "deb",
+        "snap"
+      ],
       "synopsis": "Text-editor-like weekly planner"
+    },
+    "snap": {
+      "plugs": [
+        "default"
+      ],
+      "after": [
+        "desktop-gtk2"
+      ]
     },
     "mac": {
       "category": "public.app-category.productivity",
@@ -94,7 +106,7 @@
     "connect-history-api-fallback": "^1.1.0",
     "css-loader": "^0.25.0",
     "electron": "^1.4.13",
-    "electron-builder": "^11.4.4",
+    "electron-builder": "^19.50.0",
     "electron-builder-squirrel-windows": "^11.4.0",
     "eslint": "^3.7.1",
     "eslint-config-standard": "^6.1.0",
